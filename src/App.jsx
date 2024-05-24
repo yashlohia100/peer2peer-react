@@ -13,12 +13,12 @@ export default function App() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<Homepage />} />
-          <Route path="/listings" element={<ListingsPage />} />
-          <Route path="/listings/:listingId" element={<ListingDetail />} />
+          <Route path="listings" element={<ListingsPage />} />
+          <Route path="listings/:listingId" element={<ListingDetail />} />
         </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
