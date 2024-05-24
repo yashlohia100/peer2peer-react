@@ -1,5 +1,6 @@
 import { HiOutlineHome, HiOutlineUsers } from 'react-icons/hi2';
 import IconBox from './IconBox';
+import SelectLocation from './SelectLocation';
 
 export default function Homepage() {
   return (
@@ -12,6 +13,8 @@ export default function Homepage() {
         <IconBox icon={<HiOutlineHome />} text="Room" />
         <IconBox icon={<HiOutlineUsers />} text="Roommate" />
       </div>
+
+      <SelectLocation />
     </div>
   );
 }
