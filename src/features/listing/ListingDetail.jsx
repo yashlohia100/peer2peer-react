@@ -1,3 +1,9 @@
+import PersonInfo from './listing-ui/PersonInfo';
+
 export default function ListingDetail() {
-  return <div>ListingDetail</div>;
+  return (
+    <div>
+      <PersonInfo />
+    </div>
+  );
 }
