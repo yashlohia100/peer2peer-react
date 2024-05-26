@@ -9,7 +9,7 @@ export default function AppLayout() {
         <Navbar />
       </div>
 
-      <div>
+      <div className="overflow-y-scroll">
         <main className="mx-auto max-w-6xl">
           <Outlet />
         </main>
