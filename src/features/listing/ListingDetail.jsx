@@ -1,5 +1,6 @@
 import BasicInfo from './listing-ui/BasicInfo';
 import Carousel from './listing-ui/Carousel';
+import ExtraInfo from './listing-ui/ExtraInfo';
 import Facilities from './listing-ui/Facilities';
 import PersonInfo from './listing-ui/PersonInfo';
 import Preferences from './listing-ui/Preferences';
@@ -12,6 +13,7 @@ export default function ListingDetail() {
       <Carousel />
       <Preferences />
       <Facilities />
+      <ExtraInfo />
     </div>
   );
 }
