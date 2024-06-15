@@ -20,7 +20,7 @@ export default function Signup() {
     <div className="h-screen bg-zinc-50">
       <form
         onSubmit={handleSubmit(onValid)}
-        className="mx-auto max-w-sm pt-12 text-sm"
+        className="mx-auto max-w-sm px-4 pt-12 text-sm"
       >
         <h2 className="text-center text-lg font-medium text-zinc-600">
           Create your account
