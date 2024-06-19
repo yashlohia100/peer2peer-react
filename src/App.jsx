@@ -6,6 +6,8 @@ import Login from './features/user/Login';
 import Signup from './features/user/Signup';
 import PageNotFound from './ui/PageNotFound';
 import AppLayout from './ui/AppLayout';
+import RoommateListingForm from './features/listing/RoommateListingForm';
+import RoomListingForm from './features/listing/RoomListingForm';
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
 
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="new-listing/roommate" element={<RoommateListingForm />} />
+        <Route path="new-listing/room" element={<RoomListingForm />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
