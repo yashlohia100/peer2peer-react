@@ -8,6 +8,7 @@ import PageNotFound from './ui/PageNotFound';
 import AppLayout from './ui/AppLayout';
 import RoommateListingForm from './features/listing/RoommateListingForm';
 import RoomListingForm from './features/listing/RoomListingForm';
+import ProfilePage from './features/user/ProfilePage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route index element={<Homepage />} />
           <Route path="listings" element={<ListingsPage />} />
           <Route path="listings/:listingId" element={<ListingDetail />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="login" element={<Login />} />
