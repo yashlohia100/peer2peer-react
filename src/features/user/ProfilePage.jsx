@@ -4,7 +4,7 @@ import UpdateDetails from './UpdateDetails';
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen divide-y-2 pt-6">
+    <div className="mx-auto min-h-screen max-w-lg divide-y-2 pt-6">
       <ProfileImage />
       <UpdateDetails />
       <NewListing />
