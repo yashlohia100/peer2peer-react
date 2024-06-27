@@ -1,8 +1,17 @@
 import SelectLocation from '../../ui/SelectLocation';
 import Listing from './Listing';
 import ListingNavbar from './ListingNavbar';
+import { useGetListings } from './useGetListings';
 
 export default function ListingsPage() {
+  const { isPending, listings, error } = useGetListings();
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(listings);
+
   return (
     <div className="min-h-screen px-6 pt-4">
       <div className="flex flex-col gap-6 border-b border-gray-300 pb-1 lg:flex-row-reverse lg:justify-between lg:pb-2 lg:pt-6">
