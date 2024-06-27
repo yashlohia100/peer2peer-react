@@ -20,11 +20,9 @@ export default function ListingsPage() {
       </div>
 
       <ul className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-12 lg:gap-10">
-        <Listing />
-        <Listing />
-        <Listing />
-        <Listing />
-        <Listing />
+        {listings.map((listing) => (
+          <Listing key={listing._id} listingObj={listing} />
+        ))}
       </ul>
     </div>
   );
