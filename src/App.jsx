@@ -9,24 +9,35 @@ import AppLayout from './ui/AppLayout';
 import RoommateListingForm from './features/listing/RoommateListingForm';
 import RoomListingForm from './features/listing/RoomListingForm';
 import ProfilePage from './features/user/ProfilePage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route index element={<Homepage />} />
-          <Route path="listings" element={<ListingsPage />} />
-          <Route path="listings/:listingId" element={<ListingDetail />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Route>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Homepage />} />
+            <Route path="listings" element={<ListingsPage />} />
+            <Route path="listings/:listingId" element={<ListingDetail />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Route>
 
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="new-listing/roommate" element={<RoommateListingForm />} />
-        <Route path="new-listing/room" element={<RoomListingForm />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route
+            path="new-listing/roommate"
+            element={<RoommateListingForm />}
+          />
+          <Route path="new-listing/room" element={<RoomListingForm />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
