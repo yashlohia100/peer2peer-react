@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function SelectLocation() {
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState('ghaziabad');
 
   const [searchParams] = useSearchParams();
   const type = searchParams.get('type');
