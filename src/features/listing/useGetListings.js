@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import { getAllListingsApi } from '../../services/apiFunctions';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { getAllListingsApi } from '../../services/apiFunctions';
 
 export function useGetListings() {
   const [searchParams] = useSearchParams();
@@ -14,6 +15,15 @@ export function useGetListings() {
     queryKey: ['listings'],
     queryFn: () => getAllListingsApi(type),
   });
+
+  const queryClient = useQueryClient();
+
+  useEffect(
+    function () {
+      queryClient.invalidateQueries({ queryKey: ['listings'] });
+    },
+    [type, queryClient],
+  );
 
   return { isPending, listings, error };
 }

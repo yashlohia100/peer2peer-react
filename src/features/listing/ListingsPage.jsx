@@ -10,7 +10,7 @@ export default function ListingsPage() {
     return <div>Loading...</div>;
   }
 
-  console.log(listings);
+  // console.log(listings);
 
   return (
     <div className="min-h-screen px-6 pt-4">
