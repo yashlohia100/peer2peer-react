@@ -1,7 +1,30 @@
+import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
 export default function SelectLocation() {
+  const [city, setCity] = useState(null);
+
+  const [searchParams] = useSearchParams();
+  const type = searchParams.get('type');
+
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    navigate(`?type=${type}&city=${city}`);
+  }
+
   return (
-    <form className="flex items-center justify-center gap-3">
-      <select className="w-56 rounded-full px-4 py-2 text-zinc-700 transition focus:outline-none focus:ring focus:ring-emerald-300 md:py-3">
+    <form
+      className="flex items-center justify-center gap-3"
+      onSubmit={handleSubmit}
+    >
+      <select
+        className="w-56 rounded-full px-4 py-2 text-zinc-700 transition focus:outline-none focus:ring focus:ring-emerald-300 md:py-3"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+      >
         <option value="ghaziabad">Ghaziabad</option>
         <option value="delhi">Delhi</option>
         <option value="noida">Noida</option>
