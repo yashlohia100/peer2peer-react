@@ -1,6 +1,6 @@
 export async function getAllListingsApi(type) {
   let url = null;
-  if (type) {
+  if (type !== 'all') {
     url = `http://localhost:8000/api/listings?listingType=${type}`;
   } else {
     url = `http://localhost:8000/api/listings`;
