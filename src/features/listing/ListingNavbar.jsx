@@ -8,11 +8,23 @@ import ListingNavbarItem from './ListingNavbarItem';
 export default function ListingNavbar() {
   return (
     <nav className="flex items-center justify-center gap-4">
-      <ListingNavbarItem icon={<HiOutlineQueueList />} text="All Listings" />
+      <ListingNavbarItem
+        icon={<HiOutlineQueueList />}
+        text="All Listings"
+        toListingType="all"
+      />
 
-      <ListingNavbarItem icon={<HiOutlineHome />} text="Rooms" />
+      <ListingNavbarItem
+        icon={<HiOutlineHome />}
+        text="Rooms"
+        toListingType="room"
+      />
 
-      <ListingNavbarItem icon={<HiOutlineUsers />} text="Roommates" />
+      <ListingNavbarItem
+        icon={<HiOutlineUsers />}
+        text="Roommates"
+        toListingType="roommate"
+      />
     </nav>
   );
 }
