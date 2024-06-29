@@ -5,9 +5,8 @@ import { getAllListingsApi } from '../../services/apiFunctions';
 
 export function useGetListings() {
   const [searchParams] = useSearchParams();
-  const type = searchParams.get('type');
-  const city = searchParams.get('city');
-  const page = searchParams.get('page');
+  const searchParamsString = searchParams.toString();
+  const queryClient = useQueryClient();
 
   const {
     isPending,
@@ -15,16 +14,14 @@ export function useGetListings() {
     error,
   } = useQuery({
     queryKey: ['listings'],
-    queryFn: () => getAllListingsApi(type, city, page),
+    queryFn: () => getAllListingsApi(searchParamsString),
   });
-
-  const queryClient = useQueryClient();
 
   useEffect(
     function () {
       queryClient.invalidateQueries({ queryKey: ['listings'] });
     },
-    [type, city, page, queryClient],
+    [queryClient, searchParamsString],
   );
 
   return { isPending, listings, error };

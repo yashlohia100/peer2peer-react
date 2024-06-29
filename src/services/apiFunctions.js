@@ -1,28 +1,8 @@
-export async function getAllListingsApi(type, city, page) {
+export async function getAllListingsApi(searchParamsString) {
   let url = 'http://localhost:8000/api/listings';
-  let isFirstParam = true;
 
-  if (type && type !== 'all' && type !== 'null') {
-    url += `?listingType=${type}`;
-    isFirstParam = false;
-  }
-
-  if (city && city !== 'null') {
-    if (isFirstParam) {
-      url += `?city=${city}`;
-      isFirstParam = false;
-    } else {
-      url += `&city=${city}`;
-    }
-  }
-
-  if (page) {
-    if (isFirstParam) {
-      url += `?page=${page}`;
-      isFirstParam = false;
-    } else {
-      url += `&page=${page}`;
-    }
+  if (searchParamsString) {
+    url += '?' + searchParamsString;
   }
 
   const res = await fetch(url);
