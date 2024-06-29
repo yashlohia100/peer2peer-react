@@ -5,18 +5,19 @@ import {
 } from 'react-icons/hi2';
 import Button from '../../../ui/Button';
 
-export default function PersonInfo() {
+export default function PersonInfo({ user, location }) {
+  const { name, photo } = user;
   return (
     <div className="flex flex-col items-center gap-4 px-4 py-7">
       <div>
         <img
-          src="/profile-photo.jpg"
+          src={`${import.meta.env.VITE_IMAGE_URL}/users/${photo}`}
           alt="profile-picture"
           className="w-28 rounded-full"
         />
 
         <h3 className="mt-2 text-center text-lg font-medium text-gray-600 lg:text-xl">
-          Yash Lohia
+          {name}
         </h3>
       </div>
 
@@ -40,7 +41,7 @@ export default function PersonInfo() {
         <span className="text-base">
           <HiMapPin />
         </span>
-        <span>Rohini, New Delhi</span>
+        <span>{location}</span>
       </p>
     </div>
   );

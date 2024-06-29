@@ -1,30 +1,24 @@
 import { useState } from 'react';
 import { HiArrowLeftCircle, HiArrowRightCircle } from 'react-icons/hi2';
 
-export default function Carousel() {
-  const imagesData = [
-    'https://picsum.photos/id/11/600/400',
-    'https://picsum.photos/id/14/600/400',
-    'https://picsum.photos/id/17/600/400',
-  ];
-
+export default function Carousel({ images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function handleNextSlide() {
-    setCurrentSlide((cur) => (cur === imagesData.length - 1 ? 0 : cur + 1));
+    setCurrentSlide((cur) => (cur === images.length - 1 ? 0 : cur + 1));
   }
 
   function handlePrevSlide() {
-    setCurrentSlide((cur) => (cur === 0 ? imagesData.length - 1 : cur - 1));
+    setCurrentSlide((cur) => (cur === 0 ? images.length - 1 : cur - 1));
   }
 
   return (
     <section className="py-7">
       <div className="relative mx-auto flex w-[300px] items-center justify-center shadow-lg sm:w-[420px] md:w-[600px]">
-        {imagesData.map((item, index) => {
+        {images.map((item, index) => {
           return (
             <img
-              src={item}
+              src={`${import.meta.env.VITE_IMAGE_URL}/rooms/${item}`}
               alt="carousel-image"
               key={index}
               className={index === currentSlide ? 'rounded-lg' : 'hidden'}
@@ -47,7 +41,7 @@ export default function Carousel() {
         </button>
 
         <span className="absolute bottom-2 space-x-4">
-          {imagesData.map((_, index) => {
+          {images.map((_, index) => {
             return (
               <button
                 key={index}
