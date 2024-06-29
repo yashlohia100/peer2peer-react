@@ -1,9 +1,25 @@
+import { useState } from 'react';
+import Button from '../../ui/Button';
 import SelectLocation from '../../ui/SelectLocation';
 import Listing from './Listing';
 import ListingNavbar from './ListingNavbar';
 import { useGetListings } from './useGetListings';
+import { useSearchParams } from 'react-router-dom';
 
 export default function ListingsPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get('page')) || 1;
+
+  function handlePrevious() {
+    searchParams.set('page', page === 1 ? 1 : page - 1);
+    setSearchParams(searchParams);
+  }
+
+  function handleNext() {
+    searchParams.set('page', page + 1);
+    setSearchParams(searchParams);
+  }
+
   const { isPending, listings, error } = useGetListings();
 
   if (isPending) {
@@ -24,6 +40,18 @@ export default function ListingsPage() {
           <Listing key={listing._id} listingObj={listing} />
         ))}
       </ul>
+
+      <div>
+        <Button variant="small" onClick={handlePrevious}>
+          Prev
+        </Button>
+
+        <span>{page}</span>
+
+        <Button variant="small" onClick={handleNext}>
+          Next
+        </Button>
+      </div>
     </div>
   );
 }
