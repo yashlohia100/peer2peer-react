@@ -7,6 +7,7 @@ export function useGetListings() {
   const [searchParams] = useSearchParams();
   const type = searchParams.get('type');
   const city = searchParams.get('city');
+  const page = searchParams.get('page');
 
   const {
     isPending,
@@ -14,7 +15,7 @@ export function useGetListings() {
     error,
   } = useQuery({
     queryKey: ['listings'],
-    queryFn: () => getAllListingsApi(type, city),
+    queryFn: () => getAllListingsApi(type, city, page),
   });
 
   const queryClient = useQueryClient();
@@ -23,7 +24,7 @@ export function useGetListings() {
     function () {
       queryClient.invalidateQueries({ queryKey: ['listings'] });
     },
-    [type, city, queryClient],
+    [type, city, page, queryClient],
   );
 
   return { isPending, listings, error };

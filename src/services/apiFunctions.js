@@ -1,4 +1,4 @@
-export async function getAllListingsApi(type, city) {
+export async function getAllListingsApi(type, city, page) {
   let url = 'http://localhost:8000/api/listings';
   let isFirstParam = true;
 
@@ -13,6 +13,15 @@ export async function getAllListingsApi(type, city) {
       isFirstParam = false;
     } else {
       url += `&city=${city}`;
+    }
+  }
+
+  if (page) {
+    if (isFirstParam) {
+      url += `?page=${page}`;
+      isFirstParam = false;
+    } else {
+      url += `&page=${page}`;
     }
   }
 
