@@ -11,6 +11,7 @@ import RoomListingForm from './features/listing/RoomListingForm';
 import ProfilePage from './features/user/ProfilePage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ export default function App() {
         </Routes>
       </BrowserRouter>
 
+      <Toaster />
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

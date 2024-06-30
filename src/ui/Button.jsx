@@ -1,4 +1,4 @@
-export default function Button({ children, variant, onClick }) {
+export default function Button({ children, variant, onClick, disabled }) {
   const base =
     'rounded-full bg-emerald-500 text-sm font-semibold uppercase tracking-wide text-emerald-50 transition-colors duration-300 hover:bg-emerald-400 focus:bg-emerald-400 focus:outline-none focus:ring focus:ring-emerald-300 disabled:cursor-not-allowed ';
 
@@ -8,7 +8,7 @@ export default function Button({ children, variant, onClick }) {
   };
 
   return (
-    <button className={styles[variant]} onClick={onClick}>
+    <button className={styles[variant]} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

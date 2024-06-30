@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form';
 import Button from '../../ui/Button';
+import { useLogin } from './useLogin';
 
 const inputStyles =
   'rounded-md bg-zinc-200/75 px-2 py-1 text-zinc-800 transition duration-300 focus:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-300';
 const errorStyles = 'rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-500';
 
 export default function Login() {
+  const { isPending, login } = useLogin();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +16,7 @@ export default function Login() {
   } = useForm();
 
   function onValid(data) {
-    console.log(data);
+    login(data);
   }
 
   return (
@@ -59,7 +62,9 @@ export default function Login() {
         </div>
 
         <div className="text-center">
-          <Button variant="small">Login</Button>
+          <Button variant="small" disabled={isPending}>
+            {isPending ? 'Working...' : 'Login'}
+          </Button>
         </div>
       </form>
     </div>

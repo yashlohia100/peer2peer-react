@@ -19,3 +19,17 @@ export async function getListingApi(listingId) {
   const data = await res.json();
   return data.listing;
 }
+
+export async function loginApi(payload) {
+  const res = await fetch(`${API_URL}/users/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    credentials: 'include',
+  });
+
+  if (!res.ok) throw new Error('Unable to login.');
+
+  const data = await res.json();
+  return data.user;
+}
