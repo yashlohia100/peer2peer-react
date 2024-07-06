@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form';
 import Button from '../../ui/Button';
+import { useSignup } from './useSignup';
 
 const inputStyles =
   'rounded-md bg-zinc-200/75 px-2 py-1 text-zinc-800 transition duration-300 focus:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-300';
 const errorStyles = 'rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-500';
 
 export default function Signup() {
+  const { isPending, signup } = useSignup();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +16,7 @@ export default function Signup() {
   } = useForm();
 
   function onValid(data) {
-    console.log(data);
+    signup(data);
   }
 
   return (
@@ -91,10 +94,46 @@ export default function Signup() {
               <p className={errorStyles}>{errors.passwordConfirm.message}</p>
             )}
           </div>
+
+          <div className="flex items-center gap-4">
+            <div>
+              <input
+                type="radio"
+                id="male"
+                {...register('gender', { required: true })}
+                value="male"
+                className="peer hidden"
+              />
+              <label
+                htmlFor="male"
+                className="inline-block rounded-md bg-zinc-200 px-2 py-1 font-medium capitalize text-zinc-700 transition-colors hover:cursor-pointer peer-checked:bg-emerald-500 peer-checked:text-emerald-50"
+              >
+                Male
+              </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="female"
+                {...register('gender', { required: true })}
+                value="female"
+                className="peer hidden"
+              />
+              <label
+                htmlFor="female"
+                className="inline-block rounded-md bg-zinc-200 px-2 py-1 font-medium capitalize text-zinc-700 transition-colors hover:cursor-pointer peer-checked:bg-emerald-500 peer-checked:text-emerald-50"
+              >
+                Female
+              </label>
+            </div>
+          </div>
         </div>
 
         <div className="text-center">
-          <Button variant="small">Signup</Button>
+          <Button variant="small" disabled={isPending}>
+            {isPending ? 'Working...' : 'Signup'}
+          </Button>
         </div>
       </form>
     </div>

@@ -33,3 +33,17 @@ export async function loginApi(payload) {
   const data = await res.json();
   return data.user;
 }
+
+export async function signupApi(payload) {
+  const res = await fetch(`${API_URL}/users/signup`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    credentials: 'include',
+  });
+
+  if (!res.ok) throw new Error('Unable to signup.');
+
+  const data = await res.json();
+  return data.user;
+}
