@@ -56,3 +56,14 @@ export async function getCurrentUserApi() {
   const data = await res.json();
   return data.user;
 }
+
+export async function logoutApi() {
+  const res = await fetch(`${API_URL}/users/logout`, {
+    credentials: 'include',
+  });
+
+  if (!res.ok) throw new Error('Unable to logout.');
+
+  const data = await res.json();
+  return data;
+}
