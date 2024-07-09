@@ -47,3 +47,12 @@ export async function signupApi(payload) {
   const data = await res.json();
   return data.user;
 }
+
+export async function getCurrentUserApi() {
+  const res = await fetch(`${API_URL}/users/me`, { credentials: 'include' });
+
+  if (!res.ok) throw new Error('Unable to get user.');
+
+  const data = await res.json();
+  return data.user;
+}
