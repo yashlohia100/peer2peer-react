@@ -3,7 +3,7 @@ import Button from '../../ui/Button';
 const inputStyles =
   'rounded-md bg-zinc-200/75 px-2 py-1 text-zinc-800 transition duration-300 focus:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-300';
 
-export default function UpdateDetails() {
+export default function UpdateDetails({ name, email }) {
   return (
     <div className="flex flex-col items-center gap-4 py-6 text-sm">
       <h2 className="text-lg font-medium text-zinc-600">Update details</h2>
@@ -15,7 +15,7 @@ export default function UpdateDetails() {
           type="text"
           name=""
           id="name"
-          placeholder="Yash Lohia"
+          defaultValue={name}
           className={inputStyles}
         />
       </div>
@@ -28,7 +28,7 @@ export default function UpdateDetails() {
           type="email"
           name=""
           id="email"
-          placeholder="yashlohia105@gmail.com"
+          defaultValue={email}
           className={inputStyles}
         />
       </div>
