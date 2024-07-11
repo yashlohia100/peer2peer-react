@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import Button from '../../ui/Button';
 import LookingForInput from '../../ui/form-ui/LookingForInput';
-import SelectLocationForm from '../../ui/form-ui/SelectLocationForm';
+import CityInput from '../../ui/form-ui/CityInput';
 import RentInput from '../../ui/form-ui/RentInput';
 import HighlightsInput from '../../ui/form-ui/HighlightsInput';
 import DescriptionInput from '../../ui/form-ui/DescriptionInput';
@@ -9,6 +9,7 @@ import PreferencesInput from '../../ui/form-ui/PreferencesInput';
 import OccupancyInput from '../../ui/form-ui/OccupancyInput';
 import FormHeader from '../../ui/form-ui/FormHeader';
 import FacilitiesInput from '../../ui/form-ui/FacilitiesInput';
+import LocationInput from '../../ui/form-ui/LocationInput';
 
 export default function RoomListingForm() {
   const {
@@ -31,8 +32,10 @@ export default function RoomListingForm() {
       >
         <FormHeader heading="Having a Room and looking for a roommate." />
 
+        <CityInput register={register} />
+
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
-          <SelectLocationForm register={register} />
+          <LocationInput register={register} />
           <LookingForInput register={register} />
         </div>
 
