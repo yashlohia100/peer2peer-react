@@ -67,3 +67,17 @@ export async function logoutApi() {
   const data = await res.json();
   return data;
 }
+
+export async function createListingApi(payload) {
+  const res = await fetch(`${API_URL}/listings`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    credentials: 'include',
+  });
+
+  if (!res.ok) throw new Error('Unable to create listing.');
+
+  const data = await res.json();
+  return data.listing;
+}
