@@ -9,24 +9,32 @@ import PreferencesInput from '../../ui/form-ui/PreferencesInput';
 import OccupancyInput from '../../ui/form-ui/OccupancyInput';
 import FormHeader from '../../ui/form-ui/FormHeader';
 import LocationInput from '../../ui/form-ui/LocationInput';
+import { useCreateListing } from './useCreateListing';
+import toast from 'react-hot-toast';
 
 export default function RoommateListingForm() {
+  const { isPending, createListing } = useCreateListing();
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   function onValid(data) {
-    console.log(data);
+    const payload = { ...data, listingType: 'roommate' };
+    createListing(payload);
   }
 
-  console.log(errors);
+  function onInvalid(errors) {
+    console.log(errors);
+    toast.error('Please fill the required fields');
+  }
 
   return (
     <div className="min-h-screen bg-zinc-50">
       <form
-        onSubmit={handleSubmit(onValid)}
+        onSubmit={handleSubmit(onValid, onInvalid)}
         className="mx-auto max-w-2xl space-y-8 px-8 pb-8 pt-12 text-sm lg:text-base"
       >
         <FormHeader heading="Looking for a Room with roommate." />
@@ -52,7 +60,9 @@ export default function RoommateListingForm() {
         />
 
         <div className="text-center">
-          <Button variant="small">Submit</Button>
+          <Button variant="small" disabled={isPending}>
+            Submit
+          </Button>
         </div>
       </form>
     </div>
