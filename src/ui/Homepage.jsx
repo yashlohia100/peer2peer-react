@@ -38,7 +38,7 @@ export default function Homepage() {
         />
       </div>
 
-      <SelectLocation />
+      <SelectLocation listingType={listingType} />
     </div>
   );
 }

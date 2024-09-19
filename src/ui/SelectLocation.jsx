@@ -1,13 +1,19 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export default function SelectLocation() {
+export default function SelectLocation({ listingType }) {
   const [city, setCity] = useState('ghaziabad');
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (listingType) {
+      return navigate(`listings?listingType=${listingType}&city=${city}`);
+    }
 
     searchParams.set('city', city);
     searchParams.delete('page');
