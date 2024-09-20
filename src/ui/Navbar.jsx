@@ -9,7 +9,9 @@ export default function Navbar() {
 
   return (
     <nav className="mx-auto flex max-w-6xl items-center justify-between bg-emerald-500 px-4 py-2 text-emerald-100">
-      <h1 className="text-2xl font-medium">Peer2peer</h1>
+      <Link to="/" className="text-2xl font-medium">
+        Peer2peer
+      </Link>
 
       {user ? (
         <div className="flex items-center gap-5">
