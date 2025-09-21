@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Button from '../../ui/Button';
 import SelectLocation from '../../ui/SelectLocation';
 import Listing from './Listing';
 import ListingNavbar from './ListingNavbar';
 import { useGetListings } from './useGetListings';
-import { useSearchParams } from 'react-router-dom';
 
 export default function ListingsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,12 +40,12 @@ export default function ListingsPage() {
         ))}
       </ul>
 
-      <div>
+      <div className="flex items-center justify-center gap-4 py-8">
         <Button variant="small" onClick={handlePrevious}>
           Prev
         </Button>
 
-        <span>{page}</span>
+        <span className="font-medium text-emerald-500">{page}</span>
 
         <Button variant="small" onClick={handleNext}>
           Next
